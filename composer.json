@@ -1,0 +1,31 @@
+{
+  "name": "thestormwinter/errorhandler",
+  "description": "Library is for handling E_* errors as *Exceptions",
+  "version": "0.0.1",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": "^7.1"
+  },
+  "require-dev": {
+    "nette/tester": "^2.0",
+    "tracy/tracy": "^2.5",
+    "ninjify/nunjuck": "^0.2.0"
+  },
+  "authors": [
+    {
+    "name": "Jiří Zima",
+    "email": "madeonweb@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "theStormwinter\\ErrorHandler\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "theStormwinter\\ErrorHandler\\Tests\\": "tests"
+    }
+  }
+}
