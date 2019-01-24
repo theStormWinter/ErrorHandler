@@ -42,16 +42,21 @@ class ErrorHandlerTest extends TestCase
 
 	}
 
-	public function testDisable()
-	{
-		// This must print E_NOTICE if $this->handler->disable() is active in previous test
-		$data = $this->UnVar();
-
-	}
+//	public function testDisable()
+//	{
+//		// This must print E_NOTICE if $this->handler->disable() is active in previous test
+//		$data = $this->UnVar();
+//
+//	}
 
 	public function UnVar()
 	{
 			return $test;
+	}
+
+	public function testToString()
+	{
+		echo new ErrorHandler;
 	}
 
 }

@@ -38,6 +38,9 @@ use theStormwinter\ErrorHandler\Exceptions\WarningException;
  */
 class ErrorHandler
 {
+
+	public const VERSION = '1.0.0';
+
 	/**
 	 * ErrorHandler constructor.
 	 */
@@ -162,6 +165,11 @@ class ErrorHandler
 	protected function createBody(string $errstr, string $errfile, int $errline) :string
 	{
 		return $errstr . ' in ' . $errfile . ' on line ' . $errline;
+	}
+
+	public function __toString()
+	{
+		return __NAMESPACE__ . ", version: " . self::VERSION;
 	}
 
 
