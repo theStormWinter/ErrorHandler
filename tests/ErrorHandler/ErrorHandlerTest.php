@@ -18,8 +18,9 @@ namespace theStormwinter\ErrorHandler\Tests;
 
 use Tester\Assert;
 use Tester\TestCase;
+use theStormwinter\ErrorException;
 use theStormwinter\ErrorHandler\ErrorHandler;
-use theStormwinter\ErrorHandler\Exceptions\NoticeException;
+use theStormwinter\NoticeException;
 
 
 require_once __DIR__ . '/../bootstrap.php';
@@ -32,12 +33,13 @@ class ErrorHandlerTest extends TestCase
 	public function testExceptions()
 	{
 		$this->handler = new ErrorHandler;
+		$this->handler->enable();
 		try {
 			$data = $this->UnVar();
 		}catch (NoticeException $e){
 			Assert::type(NoticeException::class, $e);
 
-//			$this->handler->disable();
+			$this->handler->disable();
 		}
 
 	}

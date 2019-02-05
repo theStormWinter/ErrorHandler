@@ -13,7 +13,7 @@
  *
  */
 
-namespace theStormwinter\ErrorHandler\Exceptions;
+namespace theStormwinter;
 
 use Exception;
 

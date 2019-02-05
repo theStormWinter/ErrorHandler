@@ -20,7 +20,8 @@
   ],
   "autoload": {
     "psr-4": {
-      "theStormwinter\\ErrorHandler\\": "src/"
+      "theStormwinter\\ErrorHandler\\": "src/",
+      "theStormwinter\\": "src/Exceptions"
     }
   },
   "autoload-dev": {

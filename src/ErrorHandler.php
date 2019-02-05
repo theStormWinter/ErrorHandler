@@ -16,20 +16,23 @@
 namespace theStormwinter\ErrorHandler;
 
 
-use theStormwinter\ErrorHandler\Exceptions\CompileErrorException;
-use theStormwinter\ErrorHandler\Exceptions\CoreErrorException;
-use theStormwinter\ErrorHandler\Exceptions\CoreWarningException;
-use theStormwinter\ErrorHandler\Exceptions\DeprecatedException;
-use theStormwinter\ErrorHandler\Exceptions\ErrorException;
-use theStormwinter\ErrorHandler\Exceptions\NoticeException;
-use theStormwinter\ErrorHandler\Exceptions\ParseException;
-use theStormwinter\ErrorHandler\Exceptions\RecoverableErrorException;
-use theStormwinter\ErrorHandler\Exceptions\StrictException;
-use theStormwinter\ErrorHandler\Exceptions\UserDeprecatedException;
-use theStormwinter\ErrorHandler\Exceptions\UserErrorException;
-use theStormwinter\ErrorHandler\Exceptions\UserNoticeException;
-use theStormwinter\ErrorHandler\Exceptions\UserWarningException;
-use theStormwinter\ErrorHandler\Exceptions\WarningException;
+
+
+
+use theStormwinter\CompileErrorException;
+use theStormwinter\CoreErrorException;
+use theStormwinter\CoreWarningException;
+use theStormwinter\DeprecatedException;
+use theStormwinter\ErrorException;
+use theStormwinter\NoticeException;
+use theStormwinter\ParseException;
+use theStormwinter\RecoverableErrorException;
+use theStormwinter\StrictException;
+use theStormwinter\UserDeprecatedException;
+use theStormwinter\UserErrorException;
+use theStormwinter\UserNoticeException;
+use theStormwinter\UserWarningException;
+use theStormwinter\WarningException;
 
 
 /**
@@ -39,20 +42,13 @@ use theStormwinter\ErrorHandler\Exceptions\WarningException;
 class ErrorHandler
 {
 
-	public const VERSION = '1.0.0';
+	public const VERSION = '1.1.0';
 
-	/**
-	 * ErrorHandler constructor.
-	 */
-	public function __construct()
-	{
-		$this->enable();
-	}
 
 	/**
 	 * This enable this handler
 	 */
-	protected function enable() :void
+	public function enable() :void
 	{
 		set_error_handler([$this, 'errors']);
 	}
@@ -167,7 +163,7 @@ class ErrorHandler
 		return $errstr . ' in ' . $errfile . ' on line ' . $errline;
 	}
 
-	public function __toString()
+	public function __toString() : string
 	{
 		return __NAMESPACE__ . ", version: " . self::VERSION;
 	}
