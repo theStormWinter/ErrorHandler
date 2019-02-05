@@ -50,6 +50,12 @@ If you want to disable this handler and use default:
 ```
 $this->handler->disable();
 ```
+## Changelog
+
+**1.1.0**
+ - Changed Exceptions namespaces
+ - Method enable() is now public and deleted constructor
+ 
 
 
 ## Contributing
