@@ -36,12 +36,13 @@ Usage is really easy:
 ```
 
 $this->handler = new \theStormwinter\ErrorHandler\ErrorHandler;
+$this->handler->enable();
 
 try{
 ...
 ask for undefined variable
 ...
-}catch(\theStormwinter\ErrorHandler\Exceptions\NoticeException $e){
+}catch(\theStormwinter\Exceptions\NoticeException $e){
 
 echo $e->getMessage();
 }

@@ -10,13 +10,9 @@
  *  *  * @copyright 2017 - 2019 Jiří Zima<madeonweb@gmail.com>
  *  *  * @license   http://www.opensource.org/licenses/mit-license.php MIT
  *  *
- *
  */
 
 namespace theStormwinter\ErrorHandler;
-
-
-
 
 
 use theStormwinter\CompileErrorException;
@@ -44,11 +40,10 @@ class ErrorHandler
 
 	public const VERSION = '1.1.0';
 
-
 	/**
 	 * This enable this handler
 	 */
-	public function enable() :void
+	public function enable(): void
 	{
 		set_error_handler([$this, 'errors']);
 	}
@@ -56,9 +51,18 @@ class ErrorHandler
 	/**
 	 * This disable this handler
 	 */
-	public function disable() :void
+	public function disable(): void
 	{
 		restore_error_handler();
+	}
+
+	/**
+	 * @param string $varname
+	 * @param string $newvalue
+	 */
+	public function iniSet(string $varname, string $newvalue) : void
+	{
+		ini_set($varname, $newvalue);
 	}
 
 	/**
@@ -66,7 +70,6 @@ class ErrorHandler
 	 * @param $errstr
 	 * @param $errfile
 	 * @param $errline
-	 *
 	 * @throws CompileErrorException
 	 * @throws CoreErrorException
 	 * @throws CoreWarningException
@@ -82,88 +85,84 @@ class ErrorHandler
 	 * @throws UserWarningException
 	 * @throws WarningException
 	 */
-	public function errors(int $errno, string $errstr, string $errfile, int $errline) :void
+	public function errors(int $errno, string $errstr, string $errfile, int $errline): void
 	{
-				switch ($errno) {
-					case E_ERROR:
-						throw new ErrorException            ($this->createBody($errstr, $errfile, $errline)
-							, $errno);
+		switch ($errno) {
+			case E_ERROR:
+				throw new ErrorException            ($this->createBody($errstr, $errfile, $errline)
+					, $errno);
 
-					case E_WARNING:
-						throw new WarningException          ($this->createBody($errstr, $errfile, $errline)
-							, $errno);
+			case E_WARNING:
+				throw new WarningException          ($this->createBody($errstr, $errfile, $errline)
+					, $errno);
 
-					case E_PARSE:
-						throw new ParseException            ($this->createBody($errstr, $errfile, $errline)
-							, $errno);
+			case E_PARSE:
+				throw new ParseException            ($this->createBody($errstr, $errfile, $errline)
+					, $errno);
 
-					case E_NOTICE:
-						throw new NoticeException           ($this->createBody($errstr, $errfile, $errline)
-							, $errno);
+			case E_NOTICE:
+				throw new NoticeException           ($this->createBody($errstr, $errfile, $errline)
+					, $errno);
 
-					case E_CORE_ERROR:
-						throw new CoreErrorException        ($this->createBody($errstr, $errfile, $errline)
-							, $errno);
+			case E_CORE_ERROR:
+				throw new CoreErrorException        ($this->createBody($errstr, $errfile, $errline)
+					, $errno);
 
-					case E_CORE_WARNING:
-						throw new CoreWarningException      ($this->createBody($errstr, $errfile, $errline)
-							, $errno);
+			case E_CORE_WARNING:
+				throw new CoreWarningException      ($this->createBody($errstr, $errfile, $errline)
+					, $errno);
 
-					case E_COMPILE_ERROR:
-						throw new CompileErrorException     ($this->createBody($errstr, $errfile, $errline)
-							, $errno);
+			case E_COMPILE_ERROR:
+				throw new CompileErrorException     ($this->createBody($errstr, $errfile, $errline)
+					, $errno);
 
-					case E_COMPILE_WARNING:
-						throw new CoreWarningException      ($this->createBody($errstr, $errfile, $errline)
-							, $errno);
+			case E_COMPILE_WARNING:
+				throw new CoreWarningException      ($this->createBody($errstr, $errfile, $errline)
+					, $errno);
 
-					case E_USER_ERROR:
-						throw new UserErrorException        ($this->createBody($errstr, $errfile, $errline)
-							, $errno);
+			case E_USER_ERROR:
+				throw new UserErrorException        ($this->createBody($errstr, $errfile, $errline)
+					, $errno);
 
-					case E_USER_WARNING:
-						throw new UserWarningException      ($this->createBody($errstr, $errfile, $errline)
-							, $errno);
+			case E_USER_WARNING:
+				throw new UserWarningException      ($this->createBody($errstr, $errfile, $errline)
+					, $errno);
 
-					case E_USER_NOTICE:
-						throw new UserNoticeException       ($this->createBody($errstr, $errfile, $errline)
-							, $errno);
+			case E_USER_NOTICE:
+				throw new UserNoticeException       ($this->createBody($errstr, $errfile, $errline)
+					, $errno);
 
-					case E_STRICT:
-						throw new StrictException           ($this->createBody($errstr, $errfile, $errline)
-							, $errno);
+			case E_STRICT:
+				throw new StrictException           ($this->createBody($errstr, $errfile, $errline)
+					, $errno);
 
-					case E_RECOVERABLE_ERROR:
-						throw new RecoverableErrorException ($this->createBody($errstr, $errfile, $errline)
-							, $errno);
+			case E_RECOVERABLE_ERROR:
+				throw new RecoverableErrorException ($this->createBody($errstr, $errfile, $errline)
+					, $errno);
 
-					case E_DEPRECATED:
-						throw new DeprecatedException       ($this->createBody($errstr, $errfile, $errline)
-							, $errno);
+			case E_DEPRECATED:
+				throw new DeprecatedException       ($this->createBody($errstr, $errfile, $errline)
+					, $errno);
 
-					case E_USER_DEPRECATED:
-						throw new UserDeprecatedException   ($this->createBody($errstr, $errfile, $errline)
-							, $errno);
-				}
-			
-
+			case E_USER_DEPRECATED:
+				throw new UserDeprecatedException   ($this->createBody($errstr, $errfile, $errline)
+					, $errno);
+		}
 	}
 
 	/**
 	 * Creates body for exceptions
-	 *
 	 * @param $errstr
 	 * @param $errfile
 	 * @param $errline
-	 *
 	 * @return string
 	 */
-	protected function createBody(string $errstr, string $errfile, int $errline) :string
+	protected function createBody(string $errstr, string $errfile, int $errline): string
 	{
 		return $errstr . ' in ' . $errfile . ' on line ' . $errline;
 	}
 
-	public function __toString() : string
+	public function __toString(): string
 	{
 		return __NAMESPACE__ . ", version: " . self::VERSION;
 	}
