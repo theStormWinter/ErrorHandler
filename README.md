@@ -1,5 +1,7 @@
 # theStormwinter\ErrorHandler
 
+[![Build Status](https://travis-ci.com/theStormWinter/ErrorHandler.svg?branch=master)](https://travis-ci.org/thestormwinter/errorhandler)
+
 This handler creates an \***Exception** instead od **E_**\*
 
 
