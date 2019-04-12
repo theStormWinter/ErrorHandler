@@ -10,11 +10,11 @@ before_install:
 
 install:
   # Composer
-  - travis_retry composer install --no-progress --prefer-dist
+  - travis_retry composer install
 
 script:
   # Tests
-  - vendor/bin/tester -p $PHP_BIN tests -s
+  - vendor\bin\tester.bat -c tests/php-win.ini tests
 
 jobs:
   include:
