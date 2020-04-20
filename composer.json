@@ -1,7 +1,7 @@
 {
   "name": "thestormwinter/errorhandler",
   "description": "Library is for handling E_* errors as *Exceptions",
-  "version": "1.0.0",
+  "version": "v1.1.2",
   "type": "library",
   "license": "MIT",
   "require": {
